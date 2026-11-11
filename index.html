@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina da Maria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Objetos 3D Voando no Fundo -->
+    <div class="background-3d">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <header>
+        <h1>Rotina da Maria</h1>
+    </header>
+
+    <div class="container">
+        <!-- Segunda-feira -->
+        <div class="card" onclick="openModal('Segunda-feira', ['06:00 - Acordo e vou para a escola', '12:00 - Almoço em casa', '13:00 - Saio para o trabalho', '18:00 - Volto para casa', '18:00 até 22:30 - Estudo em casa'], 'segunda.html')">
+            <h2>Segunda-feira</h2>
+            <p>Escola, Trabalho e Estudo até 22:30h.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Terça-feira -->
+        <div class="card" onclick="openModal('Terça-feira', ['06:00 - Acordo e vou para a escola', '12:00 - Almoço em casa', '13:00 - Saio para o trabalho', '18:00 - Aula de Teclado', '19:30 - Chego em casa'], 'terca.html')">
+            <h2>Terça-feira</h2>
+            <p>Escola, Trabalho e Aulas de Teclado.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Quarta-feira -->
+        <div class="card" onclick="openModal('Quarta-feira', ['06:00 - Acordo e vou para a escola', '12:00 - Almoço em casa', '13:00 - Saio para o trabalho', '18:10 às 19:10 - Curso de Redação', '19:30 - Retorno para casa'], 'quarta.html')">
+            <h2>Quarta-feira</h2>
+            <p>Escola, Trabalho e Curso de Redação.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Quinta-feira -->
+        <div class="card" onclick="openModal('Quinta-feira', ['06:00 - Acordo e vou para a escola', '12:00 - Almoço em casa', '13:00 - Saio para o trabalho', '18:00 - Volto para casa', '18:00 até 22:30 - Estudo em casa'], 'quinta.html')">
+            <h2>Quinta-feira</h2>
+            <p>Escola, Trabalho e Estudo até 22:30h.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Sexta-feira -->
+        <div class="card" onclick="openModal('Sexta-feira', ['06:00 - Acordo e vou para a escola', '12:00 - Almoço em casa', '13:00 - Saio para o trabalho', '18:00 - Volto para casa', '18:00 até 22:30 - Estudo em casa'], 'sexta.html')">
+            <h2>Sexta-feira</h2>
+            <p>Escola, Trabalho e Estudo até 22:30h.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Sábado -->
+        <div class="card" onclick="openModal('Sábado', ['08:00 às 12:00 - Trabalho', '12:00 às 15:00 - Estudo de tarde', 'A partir das 15:00 - Descanso o resto do dia'], 'sabado.html')">
+            <h2>Sábado</h2>
+            <p>Trabalho meio período, Estudos e Descanso.</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+
+        <!-- Domingo -->
+        <div class="card" onclick="openModal('Domingo', ['Manhã - Igreja (Servir)', 'Tarde - Almoço na Avó Materna', 'Tarde e Noite - Visita e Jantar na Avó Paterna'], 'domingo.html')">
+            <h2>Domingo</h2>
+            <p>Igreja e Tempo com a Família (Avós).</p>
+            <button class="btn-detail">Ver Rotina</button>
+        </div>
+    </div>
+
+    <!-- Modal Integrado -->
+    <div id="routineModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalTitle">Dia da Semana</h3>
+            </div>
+            <div class="modal-body">
+                <ul id="modalList"></ul>
+            </div>
+            <div class="modal-footer">
+                <a id="pageLink" href="#" class="btn-detail">Ir para Página Exclusiva</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript Embutido -->
+    <script>
+        function openModal(dayTitle, tasks, pageUrl) {
+            document.getElementById('modalTitle').innerText = dayTitle;
+            
+            const list = document.getElementById('modalList');
+            list.innerHTML = '';
+            
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.innerText = task;
+                list.appendChild(li);
+            });
+
+            document.getElementById('pageLink').setAttribute('href', pageUrl);
+            document.getElementById('routineModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('routineModal').style.display = 'none';
+        }
+
+        // Fechar o modal ao clicar fora da caixa principal
+        window.onclick = function(event) {
+            const modal = document.getElementById('routineModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
